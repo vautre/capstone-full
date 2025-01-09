@@ -7,7 +7,10 @@ const Home = () => {
         <div className='home-text'>
             <h1>NY GODDESSES</h1>
             <p>Elevate your NYC social experiences through our exclusive subscription-based service! Our mission is to create meaningful connections by curating and hosting unique events tailored to your interests. Whether you're looking to network, broaden your social circle, or simply make new friends, our events are designed to bring people together to enrich your personal and professional life. </p>
+
+            <a href='/gallery'>
             <button className='btn'>VIEW PAST EVENTS</button>
+            </a>
         </div>
     </div>
   )

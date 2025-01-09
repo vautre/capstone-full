@@ -1,12 +1,14 @@
-.login-bg{
-    /* background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('src/assets/hero.jpg'); */
-    /* background: url('/client/src/assets/hero.jpg') no-repeat; */
-    background-position: center top;
-    width: 100%; 
-    min-height: 100vh; 
+.loginform{
+    width: 100%;
+    min-height: 100vh;
+    background: url('../assets/hero.jpg');
+    opacity: 0.75;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .wrapper{
@@ -40,21 +42,13 @@
     outline: none;
     border: 2px solid rgba(225, 225, 225, 0.2);
     border-radius: 40px;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
     padding: 20px 45px 20px 20px;
 }
 
 .input-box input::placeholder{
     color: #fff;
-}
-
-.input-box .icon{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
 }
 
 .wrapper .remember-box{

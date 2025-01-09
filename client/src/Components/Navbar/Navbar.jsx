@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.png' 
 import { Link } from 'react-router-dom'
@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <nav className='nav-links'>
+      <a href='/'>
         <img src={logo} alt="" className='logo' />
+        </a>
         <ul>
             <Link to='/'><li>HOME</li></Link>
             <Link to='/about-us'><li>ABOUT US</li></Link>
