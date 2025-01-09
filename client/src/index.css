@@ -1,7 +1,54 @@
-:root {
-  --bg: #282c34;
-  --header: #fff;
-  --link: #61dafb;
-  --text: hsla(0, 0%, 100%, 0.88);
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Bungee+Tint&family=Cherry+Bomb+One&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Quicksand:wght@300..700&family=Risque&family=Scope+One&family=Uncial+Antiqua&display=swap");
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cormorant", seri;
 }
 
+body{
+  background: #fff;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ADDING CONTAINER FROM NAVBAR HERE CAUSE IM USING IT FOR ALL THE COMPONENTS */
+.container{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.btn{
+  background: #fff;
+  color: #000;
+  padding: 14px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+.btn.darker{
+  background:#000;
+  color: #fff
+}
+
+.page-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80vh;
+} 
+
+.page-container h1{
+  font-size: 70px;
+  font-weight: 500;
+}
