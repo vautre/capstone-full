@@ -1,12 +1,12 @@
 import React from 'react'
 import './About.css'
-import cny_gala from "../../assets/cny_gala.jpg"
+import cny1 from "../../assets/cny1.jpg"
 
 const About = () => {
   return (
     <div className='about'>
         <div className="about-left">
-            <img src={cny_gala} alt="" className='cny_gala' />
+            <img src={cny1} alt="" className='cny_gala' />
         </div>
 
         <div className="about-right">
