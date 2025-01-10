@@ -7,12 +7,12 @@
 }
 
 .about-left{
-    flex-basis: 40%;
+    flex-basis: 44%;
     position: relative;
 }
 
 .about-right{
-    flex-basis: 56%;
+    flex-basis: 50%;
 }
 
 .about-img{
@@ -36,4 +36,10 @@
 .about p{
     color: #676767;
     margin-bottom: 15px;
+}
+
+.cny_gala {
+    width: 120%; 
+    height: auto; 
+    margin-left: -70px;
 }

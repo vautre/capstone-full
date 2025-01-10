@@ -1,22 +1,30 @@
-.gallery-text{
+.gallery-container{
+    background: linear-gradient(rgba(254, 255, 253, 0.45), rgba(8,0,58,0.2)), url('../assets/banner.jpg');
+    /* background-color: rgb(165, 164, 164); */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.gallery-text {
     text-align: center;
     padding-top: 140px;
 }
-
-.gallery-text h1{
+  
+.gallery-text h1 {
     font-size: 30px;
     font-weight: 600;
 }
-
-.gallery-text p{
+  
+.gallery-text p {
     max-width: 700px;
     margin: 10px auto 20px;
     line-height: 1.4;
 }
-
+  
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);;
+    grid-template-columns: repeat(4, 1fr);
     gap: 5px;
     padding: 20px;
 }
@@ -26,14 +34,43 @@
     height: auto;
     object-fit: cover;
     border-radius: 0px;
-    /* position: relative; */
 }
-
-.gallery-item img:hover{
+  
+.gallery-item img:hover {
     filter: opacity(0.5);
     transition: 0.4s;
 }
   
+  /* Modal Overlay for Enlarged Image */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black bg */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 999; /* Ensure the overlay is above other content */
+}
+  
+.enlarged-image img {
+    max-width: 60%; /* Set a max-width for the enlarged image */
+    max-height: fit-content; /* Set a max-height for the enlarged image */
+    object-fit: fill; /* Ensure the image maintains aspect ratio */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+  
+  /* Ensure the image is fully visible within the screen */
+.enlarged-image {
+    display: flex;
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image */
+}
+  
+  
+  /* Footer and Social Icons Styles */
 .gallery-footer {
     text-align: center;
     padding: 20px;
