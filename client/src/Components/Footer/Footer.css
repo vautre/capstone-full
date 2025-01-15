@@ -1,0 +1,127 @@
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0 0 0;
+    width: 100%;
+  }
+  
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0 1.5rem;
+}
+  
+  /* Company Info Section */
+.company-logo {
+    width: 180px;
+    margin-bottom: 0.3rem;
+    color: #fff;
+}
+  
+.company-description {
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+  
+.contact-info {
+    margin-bottom: 0.5rem;
+}
+  
+.contact-info p {
+    margin: 0.2rem 0;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+  
+.contact-info i {
+    margin-right: 8px;
+    color: #007bff;
+}
+  
+  /* Social Links */
+.social-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+  
+.social-links a {
+    color: white;
+    background-color: #444;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+  
+.social-links a:hover {
+    background-color: #007bff;
+    transform: translateY(-3px);
+}
+  
+  /* Footer Sections */
+.footer-section h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+  
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+  
+.footer-links li {
+    margin-bottom: 0.3rem;
+}
+  
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.8rem;
+}
+  
+.footer-links a:hover {
+    color: #007bff;
+}
+  
+  /* Footer Bottom */
+.footer-bottom {
+    margin-top: 1rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    border-top: 1px solid #444;
+    color: #888;
+    font-size: 0.8rem;
+}
+  
+  /* Responsive Design */
+@media (max-width: 968px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+}
+  
+.footer-section {
+      text-align: center;
+}
+  
+.social-links {
+      justify-content: center;
+}
+.contact-info {
+      text-align: center;
+}
+} 

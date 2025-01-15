@@ -4,6 +4,8 @@ import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import Title from './Components/Title/Title';
 import Team from './Components/Team/Team';
+import Newsletter from './Components/Newsletter/Newsletter';
+import Footer from './Components/Footer/Footer';
 
 import { Route, Switch } from 'react-router-dom';
 import AboutUs from './pages/Aboutpage';
@@ -38,6 +40,8 @@ const App = () => {
         <Route path="/login" component={Loginform} />
         <Route path="/register" component={Signup} />
       </Switch>
+      <Newsletter />
+      <Footer />
     </div>
   );
 };
