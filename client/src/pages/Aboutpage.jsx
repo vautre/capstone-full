@@ -1,9 +1,16 @@
+import './Aboutpage.css'
+import Pageheader from '../Components/Pageheader/Pageheader'
+
 import React from 'react'
 
 const Aboutpage = () => {
   return (
     <div>
-        <h1>About Us</h1>
+      <Pageheader
+        title="About Us"
+        subtitle="Explore Our Past Events"
+        backgroundImage="https://picsum.photos/1920/1080?random=11"
+      />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import '../styles/Pageheader.css';
+import './Pageheader.css';
 
 const Pageheader = ({ title, subtitle, backgroundImage }) => {
   return (

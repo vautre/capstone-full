@@ -1,9 +1,9 @@
 nav{
     width: 100%;
-    /* background: #000; */
+    background: transparent;
     color: #fff;
     padding: 2% 6%;
-    position: fixed;
+    position: absolute; /*relative for sticky*/
     display: flex;
     align-items: center;
     justify-content: space-between;
