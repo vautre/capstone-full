@@ -13,7 +13,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      history.push('/admin-dashboard');
+      history.push('/404');
     }
   }, [isAuthenticated, history]);
 
@@ -39,25 +39,26 @@ const AdminDashboard = () => {
               className="admin-avatar"
             />
             <h3>Admin User</h3>
+            <p className="admin-email">admin@example.com</p>
             <button onClick={handleLogout} className="logout-button">
-              Logout
+              <i className="fas fa-sign-out-alt"></i> Logout
             </button>
           </div>
 
           <nav className="dashboard-nav">
             <button
-              className={`db-nav ${activeTab === 'events' ? 'active' : ''}`}
+              className={`db-nav-item ${activeTab === 'events' ? 'active' : ''}`}
               onClick={() => setActiveTab('events')}
             >
               <i className="fas fa-calendar-alt"></i>
-              Events Management
+              <span>Events Management</span>
             </button>
             <button
-              className={`db-nav ${activeTab === 'gallery' ? 'active' : ''}`}
+              className={`db-nav-item ${activeTab === 'gallery' ? 'active' : ''}`}
               onClick={() => setActiveTab('gallery')}
             >
               <i className="fas fa-images"></i>
-              Gallery Management
+              <span>Gallery Management</span>
             </button>
           </nav>
         </div>

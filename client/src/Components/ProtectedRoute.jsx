@@ -1,26 +1,21 @@
-import { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, isAdmin, user } = useContext(AuthContext);
-
-  console.log('Protected Route Status:', { 
-    isAuthenticated, 
-    isAdmin, 
-    userEmail: user?.email,
-    userIsAdmin: user?.isAdmin 
-  });
+const ProtectedRoute = ({ children, adminOnly = false }) => {
+  const { isAuthenticated, user } = useAuth();
 
   if (!isAuthenticated) {
-    return <Redirect to="/admin-dashboard" />;
+    // unauthorized user = redirect to login
+    return <Redirect to="/login" />;
   }
 
-  if (!isAdmin && !user?.isAdmin) {
-    return <Redirect to="/404" />;
+  if (adminOnly && !user?.isAdmin) {
+    // If logged in but not admin, redirect to home when trying to access admin routes
+    return <Redirect to="/" />;
   }
 
+  // If all checks pass, render the protected component
   return children;
 };
 

@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import logo from '../assets/logo.png';
 import './Loginform.css';
 import { useAuth } from '../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 function Loginform() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);  // New state for admin toggle
-  const { login } = useAuth();
+  const { login, user } = useAuth();
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError('');
 
     const data = {
       email: username,
@@ -19,6 +22,7 @@ function Loginform() {
     };
 
     try {
+      // Make API call first
       const endpoint = isAdmin ? '/api/admin/login' : '/api/login';
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -31,28 +35,28 @@ function Loginform() {
       const responseData = await response.json();
 
       if (response.ok) {
-        const loginData = {
+        // Create userData object with all necessary properties
+        const userData = {
           ...responseData,
-          isAdmin: responseData.isAdmin // Use the isAdmin from server response
+          isAdmin: isAdmin, // Use the isAdmin state
+          token: responseData.token,
         };
-        
-        console.log('Login Data:', loginData);
-        login(loginData);
-        
-        // Use setTimeout to ensure state is updated before redirect
-        setTimeout(() => {
-          if (loginData.isAdmin) {
-            window.location.href = '/admin-dashboard';
-          } else {
-            window.location.href = '/dashboard';
-          }
-        }, 100);
+
+        // Call login with the userData object
+        login(userData);
+
+        // Redirect based on admin status
+        if (userData.isAdmin) {
+          history.push('/admin-dashboard');
+        } else {
+          history.push('/');
+        }
       } else {
-        setError(responseData.error || 'Invalid email or password');
+        setError(responseData.message || 'Invalid credentials');
       }
-    } catch (err) {
-      setError('An error occurred, please try again later');
-      console.error('Login error:', err);
+    } catch (error) {
+      setError('Failed to log in. Please try again.');
+      console.error('Login error:', error);
     }
   };
 

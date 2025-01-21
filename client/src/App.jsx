@@ -17,48 +17,46 @@ import Signup from './pages/Signup';
 
 import AdminDashboard from './pages/AdminDashboard';
 import { AuthProvider } from './context/AuthContext';
-import NotFound from './pages/NotFound';
 import ProtectedRoute from './Components/ProtectedRoute';
+import { EventProvider } from './data/EventContext';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <EventProvider>
       <AuthProvider>
-        <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <div>
-                <Home />
-                <div className="container">
-                  <Title subTitle="BOOP" title="MEET OUR TEAM" />
-                  <Team />
-                  <Title subTitle="Gallery" title="Event photos" />
+        <BrowserRouter>
+          <div>
+            <Navbar />
+            <Switch>
+              <Route exact path="/">
+                <div>
+                  <Home />
+                  <div className="container">
+                    <Title subTitle="BOOP" title="MEET OUR TEAM" />
+                    <Team />
+                    <Title subTitle="Gallery" title="Event photos" />
+                  </div>
                 </div>
-              </div>
-            </Route>
-            <Route path="/about-us" component={AboutUs} />
-            <Route path="/gallery" component={Gallery} />
-            <Route path="/upcoming-events" component={Upcoming} />
-            <Route path="/membership" component={Membership} />
-            <Route path="/contact-us" component={Contact} />
-            <Route path="/login" component={Loginform} />
-            <Route path="/admin-dashboard" render={() => (
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            )} />
-            <Route path="/register" component={Signup} />
-            <Route path="/404" component={NotFound} />
-            <Route path="*">
-              <Redirect to="/404" />
-            </Route>
-          </Switch>
-          <Newsletter />
-          <Footer />
-        </div>
+              </Route>
+              <Route path="/about-us" component={AboutUs} />
+              <Route path="/gallery" component={Gallery} />
+              <Route path="/upcoming-events" component={Upcoming} />
+              <Route path="/membership" component={Membership} />
+              <Route path="/contact-us" component={Contact} />
+              <Route path="/login" component={Loginform} />
+              <Route path="/admin-dashboard" render={() => (
+                <ProtectedRoute adminOnly={true}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              )} />
+              <Route path="/register" component={Signup} />
+            </Switch>
+            <Newsletter />
+            <Footer />
+          </div>
+        </BrowserRouter>
       </AuthProvider>
-    </BrowserRouter>
+    </EventProvider>
   );
 };
 

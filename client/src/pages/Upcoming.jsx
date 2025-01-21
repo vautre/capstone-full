@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import {events} from '../data/events'
+import { useEvents } from '../data/EventContext';
 import './Upcoming.css';
 import Pageheader from '../Components/Pageheader/Pageheader';
 
 
 const Upcoming = () => {
+  const { events } = useEvents();
   const [viewMode, setViewMode] = useState('list');
 
   const handleTicketClick = (ticketUrl, status) => {
