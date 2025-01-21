@@ -1,0 +1,158 @@
+.admin-dashboard {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 30px;
+}
+  
+.dashboard-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+  
+.admin-profile {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+  
+.admin-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+  
+.admin-profile h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+}
+  
+.logout-button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.logout-button:hover {
+    background: #c82333;
+}
+  
+.dashboard-nav {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+.db-nav {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.db-nav i {
+    width: 20px;
+}
+  
+.db-nav:hover {
+    background: #f8f9fa;
+    color: #0f2137;
+}
+  
+.db-nav.active {
+    background: #0f2137;
+    color: white;
+}
+  
+.dashboard-content {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+  
+.content-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+}
+  
+.content-header h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+  
+.content-description {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+  
+.content-body {
+    padding: 30px;
+}
+  
+@media (max-width: 1024px) {
+    .dashboard-container {
+      flex-direction: column;
+}
+  
+.dashboard-sidebar {
+      width: 100%;
+}
+  
+.dashboard-nav {
+      display: flex;
+      gap: 10px;
+}
+  
+.db-nav {
+      margin-bottom: 0;
+      flex: 1;
+      justify-content: center;
+}
+}
+  
+@media (max-width: 768px) {
+    .dashboard-container {
+      margin: 20px auto;
+      padding: 0 15px;
+}
+  
+.content-header {
+      padding: 20px;
+}
+  
+.content-body {
+      padding: 20px;
+}
+  
+.dashboard-nav {
+      flex-direction: column;
+    }
+  } 

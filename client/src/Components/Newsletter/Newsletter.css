@@ -1,19 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 .newsletter {
     width: 100%;
-    padding: 2rem 1.5rem;
-    background-color: #f8f9fa;
+    padding: 60px 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://picsum.photos/1920/1080?random=13);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     text-align: center;
+    color: white;
+    margin-top: 30px;
 }
   
 .newsletter h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    
 }
 
 .newsletter p {
     font-size: 0.9rem;
     margin-bottom: 1rem;
-    color: #666;
+    color: #fff;
 }
   
 .newsletter form {
@@ -35,8 +43,8 @@
 .newsletter button {
     padding: 0.3rem 1rem;
     background-color: white;
-    color: #007bff;
-    border: 2px solid #007bff;
+    color: #D1B372;
+    border: 2px solid #D1B372;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -46,10 +54,16 @@
 }
   
 .newsletter button:hover {
-    background-color: #007bff;
+    background-color: #D1B372;
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sub-box{
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+    color: #fff;
 }
   
 .subscription-status {

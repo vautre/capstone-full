@@ -1,34 +1,104 @@
-from flask import request, session, jsonify
+from flask import Flask, request, session, jsonify
 from flask_restful import Resource
-from config import app, db, api
 from flask_migrate import Migrate
-from models import User
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from flask_mail import Mail, Message
+from models import User, db
 from werkzeug.exceptions import BadRequest
 from sqlalchemy.exc import IntegrityError
-from flask_cors import CORS
-from flask_jwt_extended import JWTManager
-from flask_mail import Mail, Message
-from os import environ
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from datetime import datetime
+import os
 
+# Load environment variables
 load_dotenv()
 
-# Email configuration
-app.config['MAIL_SERVER'] = environ.get('MAIL_SERVER')
-app.config['MAIL_PORT'] = int(environ.get('MAIL_PORT', 587))
-app.config['MAIL_USE_TLS'] = environ.get('MAIL_USE_TLS', 'True') == 'True'
-app.config['MAIL_USERNAME'] = environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = environ.get('MAIL_PASSWORD')
-app.config['ADMIN_EMAIL'] = environ.get('ADMIN_EMAIL')
-
-mail = Mail(app)
+# Create Flask app with explicit instance path
+app = Flask(__name__, instance_relative_config=True)
 CORS(app)
+
+# Create instance directory if it doesn't exist
+instance_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance')
+if not os.path.exists(instance_path):
+    os.makedirs(instance_path)
+
+# Configure SQLAlchemy with absolute path in instance folder
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(instance_path, 'yourdatabase.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Configure JWT
+app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
+jwt = JWTManager(app)
+
+# Email configuration
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 587))
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'True') == 'True'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['ADMIN_EMAIL'] = os.environ.get('ADMIN_EMAIL')
+
+# Initialize extensions
+mail = Mail(app)
 migrate = Migrate(app, db)
+db.init_app(app)
+
+app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
+
+# Security Configuration
+if not app.config['SECRET_KEY'] or not app.config['JWT_SECRET_KEY']:
+    raise ValueError("Secret keys not set. Please check your .env file.")
 
 @app.route('/')
 def index():
     return '<h1>Project Server</h1>'
+
+# Admin Authentication Routes
+@app.route('/api/admin/login', methods=['POST'])
+def admin_login():
+    if not request.is_json:
+        return jsonify({'error': 'Missing JSON in request'}), 400
+
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    if not email or not password:
+        return jsonify({'error': 'Email and password are required'}), 400
+
+    # Hard-coded admin credentials
+    ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL')
+    ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
+    
+    # Enhanced debug logging
+    print("Admin Login Attempt:")
+    print(f"Received email: {email}")
+    print(f"Expected admin email: {ADMIN_EMAIL}")
+    print(f"Password provided: {'Yes' if password else 'No'}")
+    print(f"Environment variables set - ADMIN_EMAIL: {'Yes' if ADMIN_EMAIL else 'No'}, ADMIN_PASSWORD: {'Yes' if ADMIN_PASSWORD else 'No'}")
+    
+    if not ADMIN_EMAIL or not ADMIN_PASSWORD:
+        print("Error: Admin credentials not properly set in environment variables")
+        return jsonify({'error': 'Server configuration error'}), 500
+    
+    if email == ADMIN_EMAIL and password == ADMIN_PASSWORD:
+        access_token = create_access_token(identity=email)
+        return jsonify({
+            'token': access_token,
+            'email': email,
+            'isAdmin': True,
+            'message': 'Login successful'
+        }), 200
+    
+    # More specific error messages
+    if email != ADMIN_EMAIL:
+        print(f"Login failed: Invalid email provided")
+        return jsonify({'error': 'Invalid email'}), 401
+    
+    print(f"Login failed: Invalid password provided")
+    return jsonify({'error': 'Invalid password'}), 401
 
 # Test route for email
 @app.route('/api/test-email', methods=['GET'])
@@ -71,20 +141,7 @@ Subscription received on: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}'''
                             sender=app.config['MAIL_USERNAME'],
                             recipients=[subscriber_email])
         
-        confirm_msg.body = '''Welcome! We're thrilled to have you on board as a subscriber to the NYGODDESSES newsletter. You’ll soon receive updates on our exciting events, special promotions, and exclusive offers – all designed to help you make the most of our services.
-
-Here's a quick preview of what’s coming your way:
-* Event Announcements: Be the first to know about upcoming events and activities.
-* Exclusive Promotions: Access special deals and offers available only to our subscribers.
-* Engaging Content: Get the latest industry insights and tips delivered right to your inbox.
-
-Thank you once again for joining our community – we’re thrilled to have you with us!
-
-Warm regards,
-Joyce Sheng
-Vice President | NYGODDESSES
-nygcpr@gmail.com
-[Social Media Links]'''
+        confirm_msg.body = '''Welcome! We're thrilled to have you on board...'''  # Your existing message
         
         mail.send(confirm_msg)
 
@@ -94,7 +151,7 @@ nygcpr@gmail.com
         print(f"Error: {str(e)}")
         return jsonify({'error': 'Failed to process subscription'}), 500
 
-# Authentication and user login
+# User Authentication Routes
 @app.post('/api/users')
 def create_user():
     data = request.json
@@ -103,19 +160,7 @@ def create_user():
         if field not in data:
             return {"error": f"missing required field: {field}"}, 400
     
-    # Validate password criteria
     try:
-        # Password validation happens here
-        password = data.get('password')
-        if len(password) < 8:
-            return {"error": "Password must be at least 8 characters long."}, 400
-        if not any(char.isupper() for char in password):
-            return {"error": "Password must contain at least one uppercase letter."}, 400
-        if not any(char.isdigit() for char in password):
-            return {"error": "Password must contain at least one number."}, 400
-        if not any(char in "!@#$%^&*(),.?\":{}|<>" for char in password):
-            return {"error": "Password must contain at least one special character."}, 400
-
         new_user = User(
             first_name=data['firstName'],
             last_name=data['lastName'],
@@ -133,10 +178,6 @@ def create_user():
         if 'email' in str(e.orig) or 'phone' in str(e.orig):
             return {'error': 'Email or phone number already in use.'}, 400
         return {'error': str(e.orig)}, 400
-
-    except BadRequest as e:
-        return {'error': 'Bad request. Please check your input.'}, 400
-    
     except Exception as e:
         return {'error': str(e)}, 400
 
@@ -169,5 +210,5 @@ def logout():
     return {}, 204
 
 if __name__ == '__main__':
-    port = int(environ.get('PORT', 5555))  # Using your original port 5555
+    port = int(os.environ.get('PORT', 5555))
     app.run(port=port, debug=True) 

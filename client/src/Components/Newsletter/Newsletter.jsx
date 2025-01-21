@@ -34,7 +34,11 @@ const Newsletter = () => {
 
   return (
     <div>
-        <section className="newsletter">
+        <section className="newsletter"style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://picsum.photos/1920/1080?random=13)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}>
         <h2>Stay Updated</h2>
         <p>Subscribe to our newsletter for the latest events and updates</p>
         <form onSubmit={handleSubscribe}>
@@ -48,7 +52,7 @@ const Newsletter = () => {
           <button type="submit">Subscribe</button>
         </form>
         <div className='sub-box'>
-          <label><input type='checkbox' />Subscribe to our newsletter</label>
+          <label><input type='checkbox' /> Subscribe to our newsletter</label>
         </div>
         {status.message && (
           <p className={`subscription-status ${status.type}`}>
