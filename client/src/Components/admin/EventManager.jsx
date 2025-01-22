@@ -90,6 +90,7 @@ function AddEventForm({ onSubmit, onCancel }) {
           <option value="available">Available</option>
           <option value="sold-out">Sold Out</option>
           <option value="cancelled">Cancelled</option>
+          <option value="creators">Creators</option>
         </select>
       </div>
       <div className="form-group">

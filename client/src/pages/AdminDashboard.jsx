@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import Pageheader from '../Components/Pageheader/Pageheader';
 import EventManager from '../Components/admin/EventManager';
 import GalleryManager from '../Components/admin/GalleryManager';
+import logowhite from '../assets/logowhite.jpg';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -34,12 +35,12 @@ const AdminDashboard = () => {
         <div className="dashboard-sidebar">
           <div className="admin-profile">
             <img 
-              src="https://picsum.photos/100/100?random=1" 
+              src={logowhite}
               alt="Admin"
               className="admin-avatar"
             />
-            <h3>Admin User</h3>
-            <p className="admin-email">admin@example.com</p>
+            <h3>Admin</h3>
+            <p className="admin-email">joyceshengjia@gmail.com</p>
             <button onClick={handleLogout} className="logout-button">
               <i className="fas fa-sign-out-alt"></i> Logout
             </button>

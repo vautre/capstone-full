@@ -2,14 +2,14 @@
 
 .newsletter {
     width: 100%;
-    padding: 60px 20px;
+    padding: 90px 20px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://picsum.photos/1920/1080?random=13);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     text-align: center;
     color: white;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
   
 .newsletter h2 {

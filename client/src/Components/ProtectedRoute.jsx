@@ -6,16 +6,14 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
   const { isAuthenticated, user } = useAuth();
 
   if (!isAuthenticated) {
-    // unauthorized user = redirect to login
     return <Redirect to="/login" />;
   }
 
   if (adminOnly && !user?.isAdmin) {
-    // If logged in but not admin, redirect to home when trying to access admin routes
     return <Redirect to="/" />;
   }
 
-  // If all checks pass, render the protected component
+  // If all checks pass -> Dash
   return children;
 };
 
