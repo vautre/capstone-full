@@ -158,7 +158,7 @@ const Membership = () => {
           </div>
           
           <div className="cta-gallery">
-            <div className="gallery-grid">
+            <div className="member-grid">
               <div className="gallery-item main">
                 <img src="https://res.cloudinary.com/dyqbbdguz/image/upload/v1737580668/IMG_7707_ivlkn1.jpg" 
                 alt=""/>

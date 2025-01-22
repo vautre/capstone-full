@@ -581,7 +581,7 @@
     color: #D1B372;
 }
 
-.gallery-grid {
+.member-grid {
     display: flex;
     gap: 30px;
     height: 600px;
@@ -733,7 +733,7 @@
         margin: 0 auto 50px;
     }
 
-    .gallery-grid {
+    .member-grid {
         height: 500px;
     }
 }
@@ -747,7 +747,7 @@
         font-size: 3.5rem;
     }
 
-    .gallery-grid {
+    .member-grid {
         height: 400px;
         gap: 20px;
     }
@@ -762,7 +762,7 @@
         font-size: 2.8rem;
     }
 
-    .gallery-grid {
+    .gmember-grid {
         flex-direction: column;
         height: auto;
     }
