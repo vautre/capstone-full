@@ -1,12 +1,10 @@
 import React from 'react';
 import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Home/Home';
-import Title from './Components/Title/Title';
-import Team from './Components/Team/Team';
 import Newsletter from './Components/Newsletter/Newsletter';
 import Footer from './Components/Footer/Footer';
 
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import Homepage from './pages/Homepage';
 import AboutUs from './pages/Aboutpage';
 import Gallery from './pages/Gallery';
 import Upcoming from './pages/Upcoming';
@@ -30,12 +28,7 @@ const App = () => {
             <Switch>
               <Route exact path="/">
                 <div>
-                  <Home />
-                  <div className="container">
-                    <Title subTitle="BOOP" title="MEET OUR TEAM" />
-                    <Team />
-                    <Title subTitle="Gallery" title="Event photos" />
-                  </div>
+                  <Homepage />
                 </div>
               </Route>
               <Route path="/about-us" component={AboutUs} />

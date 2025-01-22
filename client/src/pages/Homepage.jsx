@@ -1,7 +1,7 @@
 import React from 'react'
-import './Home.css'
+import './Homepage.css'
 
-const Home = () => {
+const Homepage = () => {
   return (
     <div className='home container'>
         <div className='home-text'>
@@ -17,4 +17,4 @@ const Home = () => {
 }
 
 
-export default Home
+export default Homepage

@@ -1,5 +1,8 @@
 import './Aboutpage.css'
 import Pageheader from '../Components/Pageheader/Pageheader'
+import dav from '../assets/members/dav.jpg'
+import j from '../assets/members/j.jpg'
+import mon from '../assets/members/mon.jpg'
 
 import React from 'react'
 
@@ -36,7 +39,7 @@ const Aboutpage = () => {
 
       {/* Second Section */}
       <div className="py-16 bg-gray-50">
-        <div className="about-section">
+        <div className="about-section2">
           <div className="about-content">
             <h2 className="section-title">Our Mission
             </h2>
@@ -50,6 +53,99 @@ const Aboutpage = () => {
               alt="Our journey"
               className="about-image"
             />
+          </div>
+        </div>
+      </div>
+
+      <div className="py-16 team-section-hex">
+        <div className="team-container">
+          <h2 className="team-title-hex">Meet Our Team</h2>
+          <p className="team-subtitle-hex">The minds behind our vision</p>
+          
+          <div className="team-grid-hex">
+            <div className="team-card-hex">
+              <div className="hex-container">
+                <div className="hex-image-wrap">
+                  <img
+                    src={dav}
+                    alt="dav"
+                    className="hex-image"
+                  />
+                </div>
+                <div className="hex-content">
+                  <div className="hex-inner">
+                    <h3 className="hex-name">David Tai</h3>
+                    <div className="hex-social">
+                      <a href="https://www.instagram.com/drdavidtai/" className="hex-social-link"><i className="fab fa-instagram"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="hex-details">
+                <h2 className="hex-title">Founder, CEO</h2>
+                <div className="hex-expertise">
+                  <span>Team Leadership</span>
+                  <span>Event-Management</span>
+                  <span>Brand Development</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="team-card-hex">
+              <div className="hex-container">
+                <div className="hex-image-wrap">
+                  <img
+                    src={j}
+                    alt="Joyce Sheng"
+                    className="hex-image"
+                  />
+                </div>
+                <div className="hex-content">
+                  <div className="hex-inner">
+                    <h3 className="hex-name">Joyce Sheng</h3>
+                    <div className="hex-social">
+                      <a href="https://www.instagram.com/joyceshengjia/" className="hex-social-link"><i className="fab fa-instagram"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="hex-details">
+              <h3 className="hex-title">Vice President, Software Engineer</h3>
+                <div className="hex-expertise">
+                  <span>Full-Stack Development</span>
+                  <span>UI/UX Design</span>
+                  <span>Public Relations</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="team-card-hex">
+              <div className="hex-container">
+                <div className="hex-image-wrap">
+                  <img
+                    src={mon}
+                    alt="Monica Pan"
+                    className="hex-image"
+                  />
+                </div>
+                <div className="hex-content">
+                  <div className="hex-inner">
+                    <h3 className="hex-name">Monica Pan</h3>
+                    <div className="hex-social">
+                    <a href="https://www.instagram.com/monicapyh/" className="hex-social-link"><i className="fab fa-instagram"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="hex-details">
+                <h3 className="hex-title">Chief Marketing Officer</h3>
+                <div className="hex-expertise">
+                  <span>Content Marketing</span>
+                  <span>Advertising Strategy</span>
+                  <span>Influencer Outreach</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
