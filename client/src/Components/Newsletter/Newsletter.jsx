@@ -6,7 +6,6 @@ const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState({ message: '', type: '' });
 
-
     const handleSubscribe = async (e) => {
         e.preventDefault();
         try {
@@ -30,38 +29,28 @@ const Newsletter = () => {
           setStatus({ message: 'Failed to connect to server', type: 'error' });
           console.error('Error:', error);
         }
-      }
+    }
 
-  return (
-    <div>
-        <section className="newsletter"style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://picsum.photos/1920/1080?random=13)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}>
-        <h2>Stay Updated</h2>
-        <p>Subscribe to our newsletter for the latest events and updates</p>
-        <form onSubmit={handleSubscribe}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-          <button type="submit">Subscribe</button>
-        </form>
-        <div className='sub-box'>
-          <label><input type='checkbox' /> Subscribe to our newsletter</label>
+    return (
+        <div className="footer-newsletter">
+            <p>Subscribe to our newsletter for the latest events and updates</p>
+            <form onSubmit={handleSubscribe}>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                />
+                <button type="submit">Subscribe</button>
+            </form>
+            {status.message && (
+                <p className={`subscription-status ${status.type}`}>
+                    {status.message}
+                </p>
+            )}
         </div>
-        {status.message && (
-          <p className={`subscription-status ${status.type}`}>
-            {status.message}
-          </p>
-        )}
-      </section>
-    </div>
-  )
+    )
 }
 
 export default Newsletter

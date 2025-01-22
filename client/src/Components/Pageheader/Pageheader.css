@@ -1,64 +1,194 @@
-
 .page-header {
     position: relative;
-    width: 100%;
-    height: 60vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    padding: 40px;
 }
   
-.page-header::before {
+.page-header.luxury-gold {
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+  
+.page-header.luxury-gold::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    animation: borderGlow 4s infinite;
+}
+  
+.header-content {
+    position: relative;
+    text-align: center;
+    padding: 3rem;
+    z-index: 2;
+}
+  
+.page-header.modern-gradient {
+    position: relative;
+}
+  
+.page-header.modern-gradient::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-  
-.page-header-content {
-    position: relative;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.65) 0%,    
+        rgba(255, 255, 255, 0.45) 50%,    
+        rgba(255, 255, 255, 0.25) 100%    
+    );
     z-index: 1;
-    max-width: 800px;
 }
   
-.page-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+.header-content h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.5s ease-out;
 }
   
-.page-header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
+.header-content p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    animation: fadeInUp 1.5s ease-out 0.5s backwards;
 }
   
-.page-header-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
+@keyframes borderGlow {
+    0%, 100% {
+        border-color: rgba(255, 215, 0, 0.5);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+    50% {
+        border-color: rgba(255, 215, 0, 0.8);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    }
+}
+  
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
   
 @media (max-width: 768px) {
-    .page-header {
-      height: 45vh;
-      padding: 1rem;
-}
-  
-.page-header h1 {
-      font-size: 2rem;
-}
-  
-.page-header p {
-      font-size: 1rem;
+    .header-content h1 {
+        font-size: 2.5rem;
     }
+  
+    .header-content p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Elegant corner decorations */
+.page-header::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Decorative corner accents */
+.page-header::after {
+    content: '';
+    position: absolute;
+    inset: 30px;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, 
+        rgba(255, 215, 0, 0.4), 
+        rgba(255, 255, 255, 0.2), 
+        rgba(255, 215, 0, 0.4)
+    ) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+/* Decorative lines */
+.header-content::before,
+.header-content::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.6),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 215, 0, 0.6),
+        transparent
+    );
+}
+
+.header-content::before {
+    top: 0;
+}
+
+.header-content::after {
+    bottom: 0;
+}
+
+/* Corner ornaments */
+.header-content h1::before,
+.header-content h1::after {
+    content: '❦';
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 215, 0, 0.6);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-content h1::before {
+    left: -40px;
+}
+
+.header-content h1::after {
+    right: -40px;
+}
+
+/* Add subtle animation */
+@keyframes borderShine {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.page-header::before,
+.page-header::after {
+    animation: borderShine 3s ease-in-out infinite;
 } 

@@ -1,80 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-.newsletter {
-    width: 100%;
-    padding: 90px 20px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://picsum.photos/1920/1080?random=13);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    text-align: center;
-    color: white;
-    /* margin-top: 30px; */
-}
-  
-.newsletter h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    
+.footer-newsletter {
+    padding: 1rem 0;
 }
 
-.newsletter p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+.footer-newsletter h3 {
+    margin-bottom: 0.5rem;
     color: #fff;
 }
-  
-.newsletter form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-  
-.newsletter input {
-    flex: 1;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+
+.footer-newsletter p {
+    margin-bottom: 1rem;
     font-size: 0.9rem;
 }
-  
-.newsletter button {
-    padding: 0.3rem 1rem;
+
+.footer-newsletter form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-newsletter input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+.footer-newsletter button {
+    padding: 0.5rem 1rem;
     background-color: white;
-    color: #D1B372;
+    color: #D1B372;  /* pale gold color */
     border: 2px solid #D1B372;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
-    white-space: nowrap;
     min-width: 100px;
 }
-  
-.newsletter button:hover {
+
+.footer-newsletter button:hover {
     background-color: #D1B372;
     color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.sub-box{
-    font-size: 0.9rem;
-    margin-top: 0.8rem;
-    color: #fff;
-}
-  
 .subscription-status {
-    margin-top: 0.5rem;
     font-size: 0.9rem;
+    margin-top: 0.5rem;
 }
-  
+
 .subscription-status.success {
     color: #28a745;
 }
-  
+
 .subscription-status.error {
     color: #dc3545;
 } 

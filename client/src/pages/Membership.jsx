@@ -43,28 +43,28 @@ const Membership = () => {
       image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3",
       features: [
         "Choose 2 events each month from a curated selection",
-        "Enjoy exclusive discounted rates on event tickets.",
-        "Participation in quarterly member appreciation raffles.",
+        "Enjoy exclusive discounted rates on event tickets",
+        "Participation in quarterly member appreciation raffles",
       ]
     },
     {
       name: "Platinum",
-      price: "$1,500",
+      price: "$2,500",
       image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3",
       features: [
-        "Access to an expanded range of events each month.",
+        "Access to an expanded range of events each month",
         "Personalized event recommendations based on preferences",
         "Discounts on partner services or products",
       ]
     },
     {
       name: "Diamond",
-      price: "$1,500",
+      price: "$3,500",
       image: "https://images.unsplash.com/photo-1587271339318-2e78fdf79586?ixlib=rb-4.0.3",
       features: [
-        "Invitations to members-only dinners and private gatherings.",
+        "Invitations to members-only dinners and private gatherings",
         "Option to bring one guest at a discounted rate for select events",
-        "Recognition as a top-tier member at select events.",
+        "Recognition as a top-tier member at select events",
         "Access to exclusive Diamond-only benefits and perks",
       ]
     }
@@ -96,6 +96,9 @@ const Membership = () => {
       </section>
 
       <section className="membership-tiers">
+        <div className="background-shape shape1"></div>
+        <div className="background-shape shape2"></div>
+        <div className="background-shape shape3"></div>
         <div className="section-header">
           <h2>Membership Tiers</h2>
           <div className="decorative-line"></div>
@@ -103,20 +106,32 @@ const Membership = () => {
         <div className="tier-cards">
           {membershipTiers.map((tier, index) => (
             <div className={`tier-card ${tier.name.toLowerCase()}-tier`} key={index}>
-              <div className="tier-image-container">
+              <div className="tier-header">
                 <div className="tier-image" style={{ backgroundImage: `url(${tier.image})` }}></div>
-              </div>
+                <div className="tier-overlay"></div>
+                <div className="tier-badge">{tier.name}</div>
                 <h3>{tier.name}</h3>
-                <div className="price">{tier.price}</div>
+                <div className="price">
+                  <span className="currency">$</span>
+                  <span className="amount">{tier.price.replace('$', '')}</span>
+                  <span className="period">/year</span>
+                </div>
+              </div>
               <div className="tier-content">
-                <ul>
-                  {tier.features.map((feature, featureIndex) => (
-                    <li key={featureIndex}>
-                      <span className="bullet">•</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <div className="features-list">
+                  <ul>
+                    {tier.features.map((feature, featureIndex) => (
+                      <li key={featureIndex}>
+                        <span className="checkmark">✦</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <button className="join-button">
+                  <span className="button-text">Join Now</span>
+                  <span className="button-icon">→</span>
+                </button>
               </div>
             </div>
           ))}
@@ -124,19 +139,49 @@ const Membership = () => {
       </section>
 
       <section className="cta-section">
-        <div className="cta-background">
-          <div className="cta-background-image" style={{ backgroundImage: `url(https://picsum.photos/400/400?random=1)` }}></div>
-          <div className="cta-background-image" style={{ backgroundImage: `url(https://picsum.photos/400/400?random=2)` }}></div>
-          <div className="cta-background-image" style={{ backgroundImage: `url(https://picsum.photos/400/400?random=3)` }}></div>
-          <div className="cta-background-image" style={{ backgroundImage: `url(https://picsum.photos/400/400?random=4)` }}></div>
-          <div className="cta-background-image" style={{ backgroundImage: `url(https://picsum.photos/400/400?random=5)` }}></div>
+        <div className="cta-grid">
+          <div className="cta-text-block">
+            <span className="overline">Exclusive Membership</span>
+            <h2>
+              <span className="thin">Elevate Your</span>
+              <span className="bold">Experience</span>
+            </h2>
+            <p>Step into a world of refined experiences, curated connections, and unprecedented opportunities. Where every moment is crafted with excellence.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHEjWAuyxCCIcpMG2B3KkWFOLhGaUYh61tyG0GAQOE2RQ2Rg/viewform" 
+               target="_blank" 
+               rel="noopener noreferrer">
+              <button className="membership-button">
+                <span className="button-text">Request Membership</span>
+                <span className="button-line"></span>
+              </button>
+            </a>
+          </div>
+          
+          <div className="cta-gallery">
+            <div className="gallery-grid">
+              <div className="gallery-item main">
+                <img src="https://res.cloudinary.com/dyqbbdguz/image/upload/v1737580668/IMG_7707_ivlkn1.jpg" 
+                alt=""/>
+                <div className="image-overlay"></div>
+              </div>
+              <div className="gallery-item-pair">
+                <div className="gallery-item">
+                  <img src="https://res.cloudinary.com/dyqbbdguz/image/upload/v1737567961/law_dd4m3t.jpg"/>
+                  <div className="image-overlay"></div>
+                </div>
+                <div className="gallery-item">
+                  <img src="https://res.cloudinary.com/dyqbbdguz/image/upload/v1737565489/IMG_4399_zpxrvk.jpg" 
+                  alt="Art Gallery"/>
+                  <div className="image-overlay"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="cta-content">
-          <h2>Ready to Begin Your Journey?</h2>
-          <p>Join our community today!</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHEjWAuyxCCIcpMG2B3KkWFOLhGaUYh61tyG0GAQOE2RQ2Rg/viewform" target="_blank" rel="Membership Application">
-            <button className="cta-button">Get Started</button>
-          </a>
+        
+        <div className="decorative-elements">
+          <div className="gold-accent accent-1"></div>
+          <div className="gold-accent accent-2"></div>
         </div>
       </section>
     </div>

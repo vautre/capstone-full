@@ -1,11 +1,13 @@
 import './Pageheader.css';
 
-const Pageheader = ({ title, subtitle, backgroundImage }) => {
+const Pageheader = ({ title, subtitle, style = 'modern-gradient' }) => {
+  const backgroundImage = "https://res.cloudinary.com/dyqbbdguz/image/upload/v1737581612/pexels-marta-wave-5876827_1_dfwvct.jpg";
+  
   return (
     <header 
-      className="page-header"
+      className={`page-header ${style}`}
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage})`
+        backgroundImage: `url(${backgroundImage})`
       }}
     >
       <div className="header-content">
@@ -17,3 +19,4 @@ const Pageheader = ({ title, subtitle, backgroundImage }) => {
 };
 
 export default Pageheader; 
+

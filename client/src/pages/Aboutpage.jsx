@@ -19,7 +19,7 @@ const Aboutpage = () => {
         <div className="about-section">
           <div>
             <img
-              src="https://picsum.photos/800/600?random=1"
+              src="https://res.cloudinary.com/dyqbbdguz/image/upload/v1737568079/cny_hwiuq3.jpg"
               alt="About our mission"
               className="about-image"
             />
@@ -49,7 +49,7 @@ const Aboutpage = () => {
           </div>
           <div>
             <img
-              src="https://picsum.photos/800/600?random=2"
+              src="https://res.cloudinary.com/dyqbbdguz/image/upload/v1737568225/dav20244_pdwlyr.jpg"
               alt="Our journey"
               className="about-image"
             />
@@ -59,9 +59,7 @@ const Aboutpage = () => {
 
       <div className="py-16 team-section-hex">
         <div className="team-container">
-          <h2 className="team-title-hex">Meet Our Team</h2>
-          <p className="team-subtitle-hex">The minds behind our vision</p>
-          
+          <h4 className="team-title-hex">Meet Our Team</h4>          
           <div className="team-grid-hex">
             <div className="team-card-hex">
               <div className="hex-container">

@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from './Components/Navbar/Navbar';
-import Newsletter from './Components/Newsletter/Newsletter';
 import Footer from './Components/Footer/Footer';
 
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
@@ -44,7 +43,6 @@ const App = () => {
               )} />
               <Route path="/register" component={Signup} />
             </Switch>
-            <Newsletter />
             <Footer />
           </div>
         </BrowserRouter>

@@ -35,10 +35,6 @@ import panel2 from '../assets/panel2.jpg';
 import panel3 from '../assets/panel3.jpg';
 
 
-import davpar from '../assets/davpar.jpg';
-import law from '../assets/law.jpg';
-import arlo from '../assets/arlo.jpg';
-import fushimi from '../assets/fushimi.jpg';
 
 export const albums = [
   {

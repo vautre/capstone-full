@@ -1,61 +1,73 @@
 import { Link } from 'react-router-dom';
 import './Footer.css'
-import logo from '../../assets/logo.png' 
+import Newsletter from '../Newsletter/Newsletter'
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        {/* Left - Company Info */}
-        <div className="footer-section">
-          <div className="company-info">
-            <img src={logo} alt="" className='company-logo' />
-            <p className="company-description">
-              Creating unforgettable experiences and bringing your events to life.
-            </p>
-            <div className="contact-info">
-              <p><i className="fas fa-envelope"></i> nygcpr@gmail.com</p>
-              <p><i className="fas fa-phone"></i> (555) 123-4567</p>
-            </div>
-            <div className="social-links">
-              <a href="https://instagram.com/nygoddesses" >
-              <i class="fa-brands fa-instagram"></i>
+        <div className="footer-header">
+          <h2>NEW YORK</h2>
+          <h1>GODDESSES</h1>
+          <div className="footer-venues">
+            <span>EVENTS</span>
+            <span className="separator">|</span>
+            <span>NETWORKING</span>
+            <span className="separator">|</span>
+            <span>MARKETING</span>
+          </div>
+        </div>
+
+        <div className="social-links">
+          <a href="https://instagram.com/nygoddesses" target="_blank" rel="noopener noreferrer">
+            <i className="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+
+        <div className="contact-info">
+          <div className="contact-item">
+            <i className="fas fa-envelope"></i>
+            <a href="nygcpr@gmail.com">nygcpr@gmail.com</a>
+          </div>
+          <div className="contact-item address">
+            <div className="footer-venues-grid">
+              <Link to="/">
+                <button>HOME</button>
+              </Link>
+              <Link to="/gallery">
+                <button>GALLERY</button>
+              </Link>
+              <Link to="/membership">
+                <button>MEMBERSHIP</button>
+              </Link>
+              <Link to="/contact-us">
+                <button>CONTACT US</button>
+              </Link>
+              <Link to="/about-us">
+                <button>ABOUT</button>
+              </Link>
+              <Link to="/upcoming-events">
+                <button>UPCOMING EVENTS</button>
+              </Link>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlF0aieVmkFr6ITves3JBQDvT3Any9lPeplG64CldRniJayQ/viewform?vc=0&c=0&w=1&flr=0&fbclid=PAZXh0bgNhZW0CMTEAAaa4hSxcWdRgr2T9_2tkSvcPezW50PqoTYd-SxL43S_I_m_8PSGp6ZVFJB0_aem_2eANjZn_mQq7DDsb_-8chA" 
+                target="_blank" 
+                rel="business">
+                <button>COLLABORATION</button>
+                </a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHEjWAuyxCCIcpMG2B3KkWFOLhGaUYh61tyG0GAQOE2RQ2Rg/viewform" 
+                target="_blank" 
+                rel="membership">
+                <button>JOIN US</button>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Middle Section - Services */}
-        <div className="footer-section">
-          <h3>Our Services</h3>
-          <ul className="footer-links">
-            <li><Link to="/services/weddings">Weddings</Link></li>
-            <li><Link to="/services/social">Social Gatherings</Link></li>
-          </ul>
-          <h3>Membership</h3>
-          <ul className="footer-links">
-            <li><Link to="/membership/join">Join Now</Link></li>
-            <li><Link to="/membership/benefits">Member Benefits</Link></li>
-            <li><Link to="/membership/pricing">Pricing</Link></li>
-          </ul>
+        <div className="footer-col">
+          <div className="footer-heading footer-4">
+            <Newsletter />
+          </div>
         </div>
-
-        {/* Right Section - Quick Links */}
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-          <ul className="footer-links">
-            <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
-            <li><Link to="/events">Upcoming Events</Link></li>
-            <li><Link to="/faq">FAQ</Link></li>
-            <li><Link to="/terms">Terms of Service</Link></li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        {/* <p>&copy; 2024 NYGODDES.</p> */}
       </div>
     </footer>
   );
