@@ -14,20 +14,16 @@ import os
 # Load environment variables
 load_dotenv()
 
-# Create Flask app with explicit instance path
 app = Flask(__name__, instance_relative_config=True)
 CORS(app)
 
-# Create instance directory if it doesn't exist
 instance_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance')
 if not os.path.exists(instance_path):
     os.makedirs(instance_path)
 
-# Configure SQLAlchemy with absolute path in instance folder
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(instance_path, 'yourdatabase.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Configure JWT
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
 jwt = JWTManager(app)
@@ -40,7 +36,6 @@ app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['ADMIN_EMAIL'] = os.environ.get('ADMIN_EMAIL')
 
-# Initialize extensions
 mail = Mail(app)
 migrate = Migrate(app, db)
 db.init_app(app)
@@ -72,7 +67,7 @@ def admin_login():
     ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL')
     ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')
     
-    # Enhanced debug logging
+    #Debug 
     print("Admin Login Attempt:")
     print(f"Received email: {email}")
     print(f"Expected admin email: {ADMIN_EMAIL}")
@@ -125,7 +120,7 @@ def newsletter_subscribe():
         if not subscriber_email:
             return jsonify({'error': 'Email is required'}), 400
 
-        # Send email to admin
+        # Send email to me
         msg = Message('New Newsletter Subscription',
                      sender=app.config['MAIL_USERNAME'],
                      recipients=[app.config['ADMIN_EMAIL']])
